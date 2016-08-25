@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>研究生考试时间</title>
+</head>
+<script language="javascript" type="text/javascript">     
+ window.onload=function(){
+ 	var now=new Date(),
+ 		endTime=new Date("2016,6,6"),
+ 		time=Math.ceil((endTime.getTime()-now.getTime())/(24*60*60*1000));
+ 	if(time>0){ 		
+ 		document.getElementById('timeShow').innerHTML=time;
+ 	}
+
+ }
+</script>
+</head>
+<body>
+   <div class="content2">
+    <div class="txtshow">距离设置时间还有<span  id="timeShow"></span>天</div>
+   </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>jq事件与应用</title>
+	<script type="text/javascript" src="E:\jq\jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="E:\Sublime Text 3\css\style.css">
+</head>
+<body>
+	<div id="tip"></div>
+	<input id="btntest" type="button" value="点下我" />
+  	<input id="btntest2" type="button" value="点一下我" />
+    <div id="toggle">我是动态显示的</div>
+    <input id="txtest" type="text" value=""/>
+    <div id="txt"></div>
+    <select id="seltest">
+	    <option value="葡萄">葡萄</option>
+	    <option value="苹果">苹果</option>
+	    <option value="荔枝">荔枝</option>
+	    <option value="香焦">香焦</option>
+	</select>
+    <script type="text/javascript">
+        $(function(){//$(document).ready(function(){})  (document).ready可省略
+            $("#btntest").bind("click", function () {//$(selector).bind(event,[data] function)参数event为事件名称，多个事件名称用空格隔开，function为事件执行的函数。
+                $("#tip").html("我被点击了！");
+            });
+            $("#tip").hover(//hover()方法的功能是当鼠标移到所选元素上时，执行方法中的第一个函数，鼠标移出时，执行方法中的第二个函数
+	        	function(){
+	        		$(this).css("background-color","yellow");
+	        	},
+	        	function(){
+	        		$(this).css("background-color","white");
+	        	});
+       
+            $("#btntest2").bind("click", function () {
+                $("#toggle").toggle();//toggle()方法可以在元素的click事件中绑定两个或两个以上的函数，同时，它还可以实现元素的隐藏与显示的切换
+                $("#btntest2").unbind("click"); //.unbind()方法可以移除元素已绑定的事件
+            });
+           
+          	$("#tip").one("dblclick",function(){//.one()执行一次事件。
+          		$(this).css("background-color","red");
+          	});
+
+          	$("#txtest")
+                .on("focus", function () {//focus 焦点
+                    $("#txt").html("请输入您的姓名！");
+                })
+                .on("blur", function () {//blur失去焦点 有错误
+                    if ($("#txtest").val().length==0){
+                    	$("$txt").html("你的名称不能为空！");
+                    }
+                });
+
+             $("#seltest").bind("change", function () {//当一个元素的值发生变化时，将会触发change事件
+                    if ($(this).val() == "苹果")
+                        $(this).css("background-color", "red");
+                    else
+                        $(this).css("background-color", "green");
+                });
+        });
+    </script>
+</body>
+</html>

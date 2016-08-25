@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AJAX</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="E:\jq\jquery-1.12.4.min.js"></script>
+   <!--  <link rel="stylesheet" type="text/css" href="E:\Sublime Text 3\css\style.css"> -->
+    <script type="text/javascript">
+    	//var request = new XMLHttpRequest();//创建XHR对象
+    </script>
+</head>
+<body>
+    <body>
+        <div id="divtest">
+            <div class="title">
+                <span class="fl">我最喜欢的一项运动</span> 
+                <span class="fr">
+                    <input id="btnShow" type="button" value="加载" />
+                    <input id="btnShow1" type="button" value="加载" />
+                    <input id="btnShow2" type="button" value="加载" />
+                    <input id="btnCheck" type="button" value="检查" />
+                </span>
+            </div>
+            <ul>
+            	 <li>请求输入一个数字 <input id="txtNumber" type="text" size="12" /></li>
+            	 <li id="divload"></li>
+            </ul>
+        </div>
+        
+        <script type="text/javascript">
+            $(function () {
+                $("#btnShow").bind("click", function () {
+                    var $this = $(this);
+                    $.getJSON("http://www.imooc.com/data/sport.json",function(data){//$.getJSON() 此处跨域
+                        $this.attr("disabled", "true");
+                        $.each(data, function (index, sport) {
+                            if(index==3)
+                            $("ul").append("<li>" + sport["name"] + "</li>");
+                        });
+    
+                    });
+                });
+
+                $("#btnShow1").bind("click", function () {
+                    var $this = $(this);
+                    $.getScript("http://www.imooc.com/data/sport_f.js",function(){//$.getScript()
+                        $this.attr("disabled", "true");
+                    });
+                });
+
+                $("#btnShow2").bind("click", function () {
+                    var $this = $(this);
+                    $.get("http://www.imooc.com/data/info_f.php",function(data){//$.get() 此处跨域
+                        $this.attr("disabled", "true");
+                        $("ul").append("<li>我的名字叫：" + data.name + "</li>");
+                        $("ul").append("<li>男朋友对我说：" + data.say + "</li>");
+                    }, "json");
+                });
+
+                $("#btnCheck").bind("click", function () {
+                    $.post("http://www.imooc.com/data/check_f.php",{// $.post() 此处跨域
+                        num:$("#txtNumber").val()
+                    },
+                    function (data) {
+                        $("ul").append("<li>你输入的<b>  "
+                        + $("#txtNumber").val() + " </b>是<b> "
+                        + data + " </b></li>");
+                    });
+                })
+
+                //$(selector).serialize();将表单中有name属性的元素值进行序列化，生成标准URL编码文本字符串 其中selector参数是一个或多个表单中的元素或表单元素本身。
+
+                // $.ajaxSetup({dataType:"text",  //$.ajaxSetup({}) 设置Ajax请求的一些全局性选项值
+                // type:"post",
+                // success:function(data){               
+                //         $("ul").append("<li>你输入的<b>  "
+                //             + $("#txtNumber").val() + " </b>是<b> "
+                //             + data + " </b></li>");
+                //     }
+                // });
+
+                $("#divload").ajaxStart(function(){//ajaxStart()方法用于在Ajax请求发出前触发函数
+                    $(this).html("正在请求数据...");
+                });
+                $("#divload").ajaxStop(function(){//ajaxStop()方法用于在Ajax请求完成后触发函数
+                    $(this).html("数据请求完成！");
+                });
+
+                //$(selector).load(url,[data],[callback])通过Ajax请求加载服务器中的数据，并把返回的数据放置到selector中
+            });
+        </script>
+    </body>
+</body>
+</html>

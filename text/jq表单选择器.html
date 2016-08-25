@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>表单选择器</title>
+	<script type="text/javascript" src="E:\jq\jquery-1.12.4.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="E:\Sublime Text 3\css\style.css">
+</head>
+<body>
+	<form id="myForm" action="#">
+		<input type="text" id="text1" value="我是小纸条"><br/>
+		<input type="password" id="word" value="密码"><br/>
+		<textarea rows="3" cols="8"></textarea><br/>
+		<input type="text" id="Text2" value="我也是小纸条"/><br />
+	    <button>Button</button><br/>
+ 		<input type="button" id="button1" value="按钮"> <br/>
+		<input type="radio" id="radio1"><label for="radio1">男</label>
+	    <input type="radio" id="radio2"><label for="radio2">女</label><br/>
+	    <input id="Checkbox1" type="checkbox" />
+        <label for="Checkbox1">
+        <input id="Checkbox2" type="checkbox" />
+        <label for="Checkbox2">
+            茄子</label><br />
+        <input id="Checkbox3" type="checkbox" />
+        <label for="Checkbox3">
+            黄瓜</label><br />
+            西红柿</label><br />
+        <input type="submit" value="点我就提交了" /><br />
+
+         <input type="image" src="http://img.mukewang.com/52b284ea00016b2902590070.jpg" /><br />
+        <br />
+        <img alt="" src="http://img.mukewang.com/52b284ea00016b2902590070.jpg" /><br />
+
+        <select id="Select1" multiple="multiple">
+            <option value="0">苹果</option>
+            <option value="1" selected="selected">桔子</option>
+            <option value="2">荔枝</option>
+            <option value="3" selected="selected">葡萄</option>
+            <option value="4">香蕉</option>
+        </select><br />
+        <div id="tip"></div>
+	</form>
+	<script type="text/javascript">
+		//$("#myForm :input").css("background-color","blue");//:input返回全部的表单元素
+		$("#myForm :text").css("background-color","red");//:text获取表单中全部单行的文本输入框元素
+		$("#myForm :password").addClass("bg_yellow");//:password获取表单中全部的密码输入文本框元
+		$("#myForm :radio").attr("disabled","true");//:radio获取表单中的全部单选按钮
+		$("#myForm :checkbox").attr("checked","true");//:checkbox获取表单中的全部复选按钮
+		$("#myForm input:submit").attr("value","提交");
+		//input:submit获取表单中的提交按钮 通常一个表单只有一个 :submit 选择器选取类型为 submit 的 <button> 和 <input> 元素。如果 <button> 元素没有定义类型，大多数浏览器会把该元素当作类型为 submit 的按钮。
+		$("#myForm :image").addClass("bg_blue");
+		//:image获取全部image元素 使用:image选择器只能获取<input>图像域，而不能获取<img>格式的图像元素。
+		$("#myForm :button").css("background-color","red");//:button获取按钮元素 两种形式
+		$("#myForm :checked").attr("disabled","true");//:checked可以获取处于选中状态的全部元素。
+       	var $txtOpt = $("#myForm :selected").text();
+       	//:selected获取<select>下拉列表框中全部处于选中状态的<option>选项元素。
+        $("#tip").html("选中内容为:" + $txtOpt);
+	</script>
+</body>
+</html>

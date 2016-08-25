@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>js用currentStyle和getComputedStyle获取css样式</title> 
+<style type="text/css"> 
+#div1{width:100px; height:100px; background:red;} 
+</style> 
+<script type="text/javascript"> 
+function getStyle(obj, attr) 
+{ 
+if(obj.currentStyle) 
+{ 
+return obj.currentStyle[attr]; 
+} 
+else 
+{ 
+return getComputedStyle(obj,false)[attr]; 
+} 
+} 
+window.onload=function() 
+{ 
+var oDiv=document.getElementById('div1'); 
+alert(getStyle(oDiv,'width')) 
+} 
+</script> 
+</head> 
+<body> 
+<div id="div1"></div> 
+</body> 
+</html> 

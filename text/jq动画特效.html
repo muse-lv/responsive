@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jq动画特效</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="E:\jq\jquery-1.12.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="E:\Sublime Text 3\css\style.css">
+</head>
+<body>
+     <div>
+            <h4>
+               <span class="fl">我喜欢吃的水果</span>
+               <span class="fr" id="spnTip">显示</span>
+            </h4>
+            <ul id="fr1">
+                <li>苹果</li>
+                <li>甘桔</li>
+                <li>梨</li>
+            </ul>
+            <input id="hidval" type="hidden" value="0"/>
+    </div>
+
+    <div>
+	    <h5>我喜欢吃的水果，向下滑</h5>
+            <ul id="fr2">
+                <li>苹果</li>
+                <li>甘桔</li>
+                <li>梨</li>
+            </ul>
+            <input id="hidval2" type="hidden" value="0"/>
+    </div>
+
+    <div>
+    	<h4>制作简单的动画效果</h4>
+    	<span id="animate"></span>
+    	<div id="res"></div>
+    </div>
+        
+    <script type="text/javascript">
+            $(function () {
+                $("h4").bind("click", function () {
+                    if ($("#hidval").val() == 0) {
+                        $("#fr1").hide(2000,function(){//.hide()
+                            $("#hidval").val(1);
+                        })
+                    } else {
+                        $("#fr1").show(2000,function(){//.show()
+                            $("#hidval").val(0);
+                        })
+                    }
+                });
+
+	            var $spn = $("#spnTip");
+                $("h4").bind("click", function () {
+                   $("#fr1").toggle(1000,function(){//.toggle()
+                     $spn.html() == "隐藏" ? $spn.html("显示") : $spn.html("隐藏");
+                    })
+                });
+
+                 $("h5").bind("click", function () {
+                    if ($("#hidval2").val() == 0) {
+                       $("#fr2").slideDown(1000,function(){//.slideDown()  .fadeIn() 淡入
+                            $("#hidval2").val(1);
+                        })
+                    } else {
+                        $("#fr2").slideUp(1000,function(){//.slideUp()    .fadeOut()淡出
+                            $("#hidval2").val(0);
+                        })
+                    }
+                })
+
+
+                 $("h5").bind("click",function(){
+                 	$("#fr2").slideToggle(1000,function(){//.slideToggle()  
+                 	//.fadeTo(speed,opacity,[callback])透明度
+                 		$("h5").html()=="我喜欢吃的水果，向下滑"? $("h5").html("我喜欢吃的水果，向上滑"):$("h5").html("我喜欢吃的水果，向下滑");
+                 	})
+                 });
+
+                 $("#animate").animate({//animate({params},speed,[callback])
+             	    width: "80px",
+                    height: "80px"
+                 },3000,function(){
+                 	$("#res").html("完成");
+                 });
+
+                 //.stopstop([clearQueue],[goToEnd]); 停止；有两个布尔型参数 前者表示是否停止正在执行的动画，后者表示是否完成正在执行的动画，默认为false。
+                 //.delay(3000);延时 注意是对下一个函数延时；
+            });
+
+    </script>
+</body>
+</html>

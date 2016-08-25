@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+ <head>
+ 	<meta charset="utf-8">
+  <title> new document </title>  
+  <script type="text/javascript">
+   function count(){
+		var txt1   = parseInt( document.getElementById('txt1').value);//鑾峰彇绗竴涓緭鍏ユ鐨勫€�
+		var txt2   = parseInt( document.getElementById('txt2').value);//鑾峰彇绗簩涓緭鍏ユ鐨勫€�
+		var select = document.getElementById('select').value;//鑾峰彇閫夋嫨妗嗙殑鍊�
+		var result = '';
+		switch (select)
+		 {
+			case '+':
+				result = txt1 + txt2;
+				break;
+			case '-':
+				result = txt1 - txt2;
+				break;
+			case '*':
+				result = txt1 * txt2;
+				break;
+			case '/':
+				result = txt1 / txt2;
+				break;  
+		 }
+         document.getElementById('fruit').value = result;//璁剧疆缁撴灉杈撳叆妗嗙殑鍊� 
+   }
+  </script> 
+ </head> 
+ <body>
+   <input type='text' id='txt1' /> 
+   <select id='select'>
+		<option value='+'>+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="/">/</option>
+   </select>
+   <input type='text' id='txt2' /> 
+   <input type='button' value='  =  '  onclick = "count()" /> 
+   <input type='text' id='fruit' />   
+ </body>
+</html>

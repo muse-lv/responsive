@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>限时抢购</title>
+</head>
+<script type="text/javascript">
+	window.onload=function(){
+		showTime();
+	}
+	function showTime(){
+		var now=new Date(),
+			endTime=new Date("2016/6/6,12:12:12"),
+			time=parseInt((endTime.getTime()-now.getTime())/1000),
+			d=parseInt(time/(24*60*60)),
+			h=parseInt(time/(60*60)%24),
+			m=parseInt(time/60%60),
+			s=parseInt(time%60);
+		if(time<=0){
+			document.getElementById('leftTime').innerHTML='结束';
+		}
+		document.getElementById('leftTime').innerHTML=d+'天'+h+'小时'+m+'分钟'+s+'秒';
+		setTimeout(showTime,500);
+		}
+
+</script>
+<body>
+<div class="content3">
+<div class="time">还剩 <span id="leftTime"></span></div>
+</div>
+</body>
+</html>

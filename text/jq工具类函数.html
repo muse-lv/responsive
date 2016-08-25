@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>jQuery 工具类函数</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="E:\jq\jquery-1.12.4.min.js"></script>
+</head>
+<body>
+ <div id="divtest">
+            <div class="title">
+                <span class="fl">获取浏览器名称和版本号</span> 
+            </div>
+            <div class="content"></div>
+        </div>
+        
+        <script type="text/javascript">
+            $(function () {
+                var strTmp = "您的浏览器名称是：";
+                if ($.browser.chrome) { //谷歌浏览器 $.browser.chrome
+                    strTmp += "Chrome";
+                }
+                if ($.browser.mozilla) { //火狐相关浏览器 $.browser.mozilla
+                    strTmp += "Mozilla FireFox";
+                }
+                strTmp += "<br /><br /> 版本号是：" 
+                       +$.browser.version;//获取版本号  $.browser.version
+                $(".content").html(strTmp);
+
+                //$.support.boxModel  检测浏览器是否属于W3C盒子模型
+                //$.isEmptyObject(obj);  检测对象是否为空 参数obj表示需要检测的对象名称
+                //$.isPlainObject (obj);  检测对象是否为原始对象 参数obj表示需要检测的对象名称
+                //$.contains (container, contained); 检测前一个节点是否包含后面的节点
+                //$.trim (str);  删除字符串两端空格 参数str表示需要删除左右两边空格符的字符串
+                //$. param (obj); ，能使对象或数组按照key/value格式进行序列化编码，该编码后的值常用于向服务端发送URL请求参数obj表示需要进行序列化的对象，该对象也可以是一个数组，整个函数返回一个经过序列化编码后的字符串。
+                //$. extend ({options}); 调用名为$. extend的工具函数，可以对原有的工具函数进行扩展，自定义类级别的jQuery插件
+                //$. extend (obj1,obj2,…objN); 在扩展对象时，两个对象将进行合并，当存在相同属性名时，后者将覆盖前者
+                //$. inArray('key','array')key在数组array中的index
+                //$. index('')返回合集中的index值 如$('li').index($('#item1'));
+            }); 
+</body>
+</html>

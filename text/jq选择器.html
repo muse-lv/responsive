@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>jquery</title>
+	<script type="text/javascript" src="E:\jq\jquery-1.12.4.min.js"></script>
+</head>
+<body>
+<div>
+	<ul>
+		<li></li>
+		<li id="mingzi" title="鼠标over显示"><p>why</p></li>
+		<li class="leibie"></li>
+		<a href="#"></a>
+		<input type="hidden" value="默认显示文本">
+	</ul>
+	<dl>
+		<dd></dd>
+		<dt class="things"></dt>
+		<dt id="duoge"></dt>
+		<a href="#"></a>
+		<dt class="things"></dt>
+	</dl>
+</div>
+<script type="text/javascript">
+	$("li").html("javascript/jquery");
+	$("#mingzi").html("id选择");
+	$(".leibie").html("class选择");
+	$("dl *").html("全部选择");
+	$(".things,#duoge").html("多项选择");
+	$("div dt").css("color","red");//层次选择，ance、desc选择。
+	$("div>ul").css("border","solid 2px blue");//parent > child选择器；
+	$(".leibie+a").html("相邻选择");//相邻选择。
+	$("dd~dt").css("background-color","yellow");//prev ~ siblings选择器,获取prev 元素后面全部相邻的元素.
+	//过滤器 返回的是:前的元素。
+	$("li:first").css("border","solid 3px red");//:first/:last 第一、最后一个元素.
+	$("dt:eq(0)").css("border","solid 3px #60f");//第n个元素。
+	$("li:contains('选择')").css("color","yellow");//包含文本内容。
+	$("ul:has(li)").css("background-color","#ccc");//包含标签。
+	$("dl>a").html($("input:hidden").val());
+	//选择隐藏元素（display=none、type=hidden）。/:visible选择可见元素。
+	$("li[title=鼠标over显示]").css("border","solid 3px #60f");//[attribute=value]、[attribute！=value]属性选择器。[]属性选择器括号符。
+	$("li[title*='鼠标']").css("text-align","center");//[attribute*=value]属性选择器 包含value的所有元素。
+	$("dl dd:first-child").css("text-align","center");//:first-child子元素过滤选择器.所有父类的第一个子元素
+	$("dl dt:last-child").css("text-align","center");//:last-child子元素过滤选择器.所有父类的最后一个子元素
+</script>
+</body>
+</html>

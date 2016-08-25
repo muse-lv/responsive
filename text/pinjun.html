@@ -1,0 +1,31 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>window对象</title>
+<script>
+    var str="10S,12S,5.7S,9S,14S"; //创建字符串；
+ 
+  	var arr=str.split(",");//以“,”为分隔符分割，返回数组；
+
+ 	var num=0;
+    
+    var av=0;
+    
+    for(var i=0;i<arr.length;i++){
+    
+      num+=parseFloat(  arr[i].substr(0,arr[i].length-1)  );//数组元素累加
+    
+    }
+
+av=num/arr.length; //取平均值
+
+document.write("平均成绩为："+av+"S");
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

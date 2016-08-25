@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>拖曳插件</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="http://www.imooc.com/data/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="http://www.imooc.com/data/jquery-ui-1.9.2.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div id="divtest">
+        <div id="x" class="drag">沿x轴拖拽</div>
+        <div id="y" class="drag">沿y轴拖拽</div>
+
+        <ul>
+            <li>1)足球</li>
+            <li>2)散步</li>
+            <li>3)篮球</li>
+            <li>4)乒乓球</li>
+            <li>5)骑自行车</li>
+        </ul>
+    </div>
+    
+    <script type="text/javascript">
+        $(function () {
+                $("#x").draggable({//.draggable({options}) 拖曳插件
+                    containment:"parent",
+                    axis:"x"
+                });
+                $("#y").draggable({//.draggable({options}) 拖曳插件
+                    containment:"parent",
+                    axis:"y"
+                });
+
+           //$(selector).droppable({options}) 放置插件
+           
+            $("ul").sortable({//$(selector).sortable({options}); 拖曳排序插件
+                delay:2,
+                opacity:0.5                
+            })
+        });
+
+            //$(selector).accordion({options}); 面板折叠插件 参数selector为整个面板元素，options参数为方法对应的配置对象(默认可以为空)。
+
+            //$(selector).tabs({options}); 选项卡插件
+            //$(selector).dialog({options}); 对话框插件 selector参数为显示弹出对话框的元素，通常为<div>，options参数为方法的配置对象，在对象中可以设置对话框类型、“确定”、“取消”按钮执行的代码等。
+            //$(selector).menu({options});  菜单工具插件 selector参数为菜单列表中最外层<ul>元素，options为menu()方法的配置对象。
+            //$(selector).spinner({options});  微调按钮插件 selector参数为文本输入框元素，可选项options参数为spinner()方法的配置对象，在该对象中，可以设置输入的最大、最小值，获取改变值和设置对应事件
+            //$(selector).tooltip({options});  工具提示插件 其中selector为需要显示提示信息的元素，可选项参数options为tooltip()方法的配置对象，在该对象中，可以设置提示信息的弹出、隐藏时的效果和所在位置。
+        </script>
+    </body>
+    </html>
